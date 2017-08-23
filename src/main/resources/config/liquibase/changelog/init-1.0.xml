@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="autoIncrement" value="true" dbms="mysql,h2,postgresql,oracle"/>
+    <changeSet id="20170823" author="mawei">
+        <createTable tableName="mw_user">
+            <column name="id" remarks="主键" autoIncrement="${autoIncrement}" type="bigint">
+                <constraints primaryKey="true" unique="true" nullable="false" />
+            </column>
+            <column name="login" remarks="姓名" type="varchar(60)" >
+                <constraints unique="true"   nullable="false"/>
+            </column>
+            <column name="password" remarks="密码" type="varchar(40)">
+                <constraints unique="false" nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
